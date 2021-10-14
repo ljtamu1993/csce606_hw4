@@ -7,20 +7,49 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
-  end
-
-  # def new
-  #   # default: render 'new' template
-  # end
-
-  def similar
-    @find_similar = Movie.find_similar(params[:title])
-    if @find_similar.nil?
-      redirect_to movies_path
-      flash[:warning] = "'#{params[:title]}' has no director info"
+    #Part 1,2,3 starts here:
+    if request.path == '/' #For a default path
+      reset_session
     end
-    @movie = Movie.find_by_title([params[:title]])
+    
+    @session_sort = session[:sort_by]
+    @session_ratings = session[:ratings_to_show]
+    @ratings_to_show = !@session_ratings.nil? ? @session_ratings : []
+    if !@session_sort.nil?
+      if !params[:sort].nil? and params[:sort] != @session_sort
+        @session_sort = params[:sort]
+      end
+      @sort = @session_sort
+    else
+      @sort = params[:sort] 
+    end
+    
+     @session_sort = @sort  # Added for session record
+    
+    if !params[:ratings].nil?
+      @ratings_to_show = params[:ratings].keys
+      @session_ratings = @ratings_to_show
+    end
+    
+    @movies = Movie.with_ratings(@ratings_to_show)
+    @all_ratings = Movie.all_ratings
+   
+    
+    #Added for part 2
+    #@sort = params[:sort] //Moved up for Part 3 Session data
+
+   if @sort
+      @movies = @movies.order(@sort) 
+        case @sort
+        when "title"
+          @title_header = 'bg-warning'
+          @release_date_header = 'hilite'
+        when "release_date"
+          @release_date_header = 'bg-warning'
+          @title_header = 'hilite'
+        end
+    end
+    
   end
 
   def create
@@ -45,6 +74,15 @@ class MoviesController < ApplicationController
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
+  end
+  
+  def same_dir
+    @find_same_dir = Movie.find_same_dir(params[:title])
+    if @find_same_dir.nil?
+      redirect_to movies_path
+      flash[:warning] = "'#{params[:title]}' has no director info"
+    end
+    @movie = Movie.find_by_title([params[:title]])
   end
 
   private
