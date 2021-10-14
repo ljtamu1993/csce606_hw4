@@ -1,0 +1,9 @@
+/home/ec2-user/.rvm/rubies/ruby-2.6.6/bin/ruby -I/home/ec2-user/.rvm/gems/ruby-2.6.6/gems/rspec-core-3.7.1/lib:/home/ec2-user/.rvm/gems/ruby-2.6.6/gems/rspec-support-3.7.1/lib /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/rspec-core-3.7.1/exe/rspec --pattern spec/\*\*\{,/\*/\*\*\}/\*_spec.rb
+.........................
+
+1 deprecation warning total
+
+Finished in 0.39324 seconds (files took 1.69 seconds to load)
+25 examples, 0 failures
+
+Coverage report generated for RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle.1/rottenpotatoes/coverage. 62 / 69 LOC (89.86%) covered.
