@@ -147,23 +147,9 @@
           null,
           null
         ]
-      },
-      "/home/ec2-user/environment/hw-acceptance-unit-test-cycle.1/rottenpotatoes/app/controllers/action_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1634185672
+    "timestamp": 1634186444
   },
   "RSpec": {
     "coverage": {
@@ -313,22 +299,8 @@
           null,
           null
         ]
-      },
-      "/home/ec2-user/environment/hw-acceptance-unit-test-cycle.1/rottenpotatoes/app/controllers/action_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1634185652
+    "timestamp": 1634186456
   }
 }
