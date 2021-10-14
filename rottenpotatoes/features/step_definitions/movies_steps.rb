@@ -12,9 +12,10 @@ Given /the following movies exist/ do |movies_table|
   #fail "Unimplemented"
 end
 
-# Then /(.*) seed movies should exist/ do | n_seeds |
-#   Movie.count.should be n_seeds.to_i
-# end
+#From HW3 - again!!
+Then /(.*) seed movies should exist/ do | n_seeds |
+  Movie.count.should be n_seeds.to_i
+end
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
@@ -44,11 +45,11 @@ end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  # Movie.all() do |row|
-  #   title = row[:title]
-  #   step "I should see \"#{title}\""
-  # end
-  expect(page.find_by_id("movies").find('tbody').all('tr').size).to eq Movie.count
+  Movie.all() do |row|
+    title = row[:title]
+    step "I should see \"#{title}\""
+  end
+  # expect(page.find_by_id("movies").find('tbody').all('tr').size).to eq Movie.count
 end
 
 Then /the director of "(.*)" should be "(.*)"/ do |title, expected_value|

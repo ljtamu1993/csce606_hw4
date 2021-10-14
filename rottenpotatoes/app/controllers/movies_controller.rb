@@ -8,22 +8,22 @@ class MoviesController < ApplicationController
 
   def index
     #Part 1,2,3 starts here:
-    if request.path == '/' #For a default path
-      reset_session
-    end
+    # if request.path == '/' #For a default path
+    #   reset_session
+    # end
     
     @session_sort = session[:sort_by]
     @session_ratings = session[:ratings_to_show]
     @ratings_to_show = !@session_ratings.nil? ? @session_ratings : []
-    if !@session_sort.nil?
-      if !params[:sort].nil? and params[:sort] != @session_sort
-        @session_sort = params[:sort]
-      end
-      @sort = @session_sort
-    else
-      @sort = params[:sort] 
-    end
-    
+    # if !@session_sort.nil?
+    #   # if !params[:sort].nil? and params[:sort] != @session_sort
+    #   #   @session_sort = params[:sort]
+    #   # end
+    #   @sort = @session_sort
+    # else
+    #   @sort = params[:sort] 
+    # end
+    @sort = params[:sort]
      @session_sort = @sort  # Added for session record
     
     if !params[:ratings].nil?

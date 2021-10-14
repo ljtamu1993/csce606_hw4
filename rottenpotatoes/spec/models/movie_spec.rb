@@ -29,7 +29,7 @@ describe Movie do
     let!(:movie1) { FactoryBot.create(:movie, title: 'The Incredibles', rating: 'PG', director: 'Brad Bird') }
     let!(:movie2) { FactoryBot.create(:movie, title: 'The Incredibles II', rating: 'PG', director: 'Brad Bird') }
     let!(:movie3) { FactoryBot.create(:movie, title: 'Avatar', rating: 'PG', director: 'James Cameron') }
-    let!(:movie4) { FactoryBot.create(:movie, title: 'Movie with no director', rating: 'PG-13', director: 'Amran Haroon')}
+    let!(:movie4) { FactoryBot.create(:movie, title: 'Movie with no director info', rating: 'PG-13')}
 
     describe 'with_ratings' do
         context 'rating list is empty' do
@@ -62,7 +62,7 @@ describe Movie do
         end
         context 'director does not exist' do
             it 'should return correct matches for movies with no directors' do
-                expect(Movie.find_same_dir(movie4.title)).to eq(nil || ['Movie with no director'])
+                expect(Movie.find_same_dir(movie4.title)).to eq(nil || ['Movie with no director info'])
             end
         end
     end

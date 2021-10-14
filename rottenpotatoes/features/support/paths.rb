@@ -24,7 +24,7 @@ module NavigationHelpers
     
     when /^the edit page for "(.*)"$/ then '/movies/' + Movie.find_by(:title => $1).id.to_s() + '/edit'
     when /^the details page for "(.*)"$/ then '/movies/' + Movie.find_by(:title => $1).id.to_s()
-    when /^the same_dir Movies page for "(.*)"$/ then '/same_dir/' + URI.encode($1)             #+ Movie.find_by(:title => $1).id.to_s() + '/same_directors'
+    when /^the Similar Movies page for "(.*)"$/ then '/same_dir/' + URI.encode($1)             #+ Movie.find_by(:title => $1).id.to_s() + '/same_directors'
 
     else
       begin
