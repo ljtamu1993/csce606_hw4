@@ -10,8 +10,17 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
-  def new
-    # default: render 'new' template
+  # def new
+  #   # default: render 'new' template
+  # end
+
+  def similar
+    @find_similar = Movie.find_similar(params[:title])
+    if @find_similar.nil?
+      redirect_to movies_path
+      flash[:warning] = "'#{params[:title]}' has no director info"
+    end
+    @movie = Movie.find_by_title([params[:title]])
   end
 
   def create
@@ -42,6 +51,6 @@ class MoviesController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:movie).permit(:title, :rating, :description, :release_date, :director)
   end
 end
