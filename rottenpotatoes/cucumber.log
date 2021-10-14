@@ -106,5 +106,5 @@ Feature: display list of movies sorted by different criteria
 
 7 scenarios (7 passed)
 43 steps (43 passed)
-0m0.815s
-Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle.1/rottenpotatoes/coverage. 62 / 69 LOC (89.86%) covered.
+0m0.921s
+Coverage report generated for Cucumber Features to /home/ec2-user/environment/hw-acceptance-unit-test-cycle.1/rottenpotatoes/coverage. 55 / 62 LOC (88.71%) covered.
